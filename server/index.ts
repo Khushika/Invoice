@@ -4,6 +4,21 @@ import cors from "cors";
 import { handleDemo } from "./routes/demo";
 import { handleSignUp, handleSignIn, handleSignOut } from "./routes/auth";
 import { handleDashboard } from "./routes/dashboard";
+import {
+  handleGetInvoices,
+  handleGetInvoice,
+  handleCreateInvoice,
+  handleUpdateInvoice,
+  handleMarkPaid,
+  handleSendReminder,
+} from "./routes/invoices";
+import {
+  handleGetClients,
+  handleGetClient,
+  handleCreateClient,
+  handleUpdateClient,
+  handleDeleteClient,
+} from "./routes/clients";
 
 export function createServer() {
   const app = express();
@@ -28,6 +43,21 @@ export function createServer() {
 
   // Dashboard
   app.get("/api/dashboard", handleDashboard);
+
+  // Invoice routes
+  app.get("/api/invoices", handleGetInvoices);
+  app.post("/api/invoices", handleCreateInvoice);
+  app.get("/api/invoices/:id", handleGetInvoice);
+  app.put("/api/invoices/:id", handleUpdateInvoice);
+  app.post("/api/invoices/:id/mark-paid", handleMarkPaid);
+  app.post("/api/invoices/:id/remind", handleSendReminder);
+
+  // Client routes
+  app.get("/api/clients", handleGetClients);
+  app.post("/api/clients", handleCreateClient);
+  app.get("/api/clients/:id", handleGetClient);
+  app.put("/api/clients/:id", handleUpdateClient);
+  app.delete("/api/clients/:id", handleDeleteClient);
 
   return app;
 }
