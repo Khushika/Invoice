@@ -5,6 +5,13 @@ import { handleDemo } from "./routes/demo";
 import { handleSignUp, handleSignIn, handleSignOut } from "./routes/auth";
 import { handleDashboard } from "./routes/dashboard";
 import {
+  handleSignUp,
+  handleSignIn,
+  handleSignOut,
+  handleResetPassword,
+  handleDeleteAccount,
+} from "./routes/auth";
+import {
   handleGetInvoices,
   handleGetInvoice,
   handleCreateInvoice,

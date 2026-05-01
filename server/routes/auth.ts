@@ -63,3 +63,37 @@ export const handleSignOut: RequestHandler = (req, res) => {
   // In production: clear session/cookie
   res.json({ success: true, message: "Signed out" });
 };
+
+export const handleResetPassword: RequestHandler = (req, res) => {
+  try {
+    const { email } = req.body;
+
+    if (!email) {
+      res.status(400).json({ error: "Email required" });
+      return;
+    }
+
+    // In production: generate reset token, save to DB, send via Resend
+    res.json({
+      success: true,
+      message: "Password reset link sent to email",
+    });
+  } catch (error) {
+    res.status(500).json({
+      error: "Failed to reset password",
+      details: error instanceof Error ? error.message : "Unknown error",
+    });
+  }
+};
+
+export const handleDeleteAccount: RequestHandler = (req, res) => {
+  try {
+    // In production: soft delete user, anonymize PII, cancel Stripe subscription
+    res.json({ success: true, message: "Account deleted" });
+  } catch (error) {
+    res.status(500).json({
+      error: "Failed to delete account",
+      details: error instanceof Error ? error.message : "Unknown error",
+    });
+  }
+};
