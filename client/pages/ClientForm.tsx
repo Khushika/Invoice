@@ -82,16 +82,10 @@ export default function ClientForm() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b border-border/40 bg-card/50 backdrop-blur-sm sticky top-0 z-40">
-        <div className="container mx-auto px-4 py-6">
-          <h1 className="font-sora text-3xl font-bold">
-            {isEditing ? "Edit Client" : "Add New Client"}
-          </h1>
-        </div>
-      </header>
-
-      <main className="container mx-auto px-4 py-8 max-w-2xl">
+      <div className="container mx-auto px-4 py-8 max-w-2xl">
+        <h1 className="font-sora text-3xl font-bold mb-8">
+          {isEditing ? "Edit Client" : "Add New Client"}
+        </h1>
         {error && (
           <div className="bg-red-500/20 border border-red-500/50 text-red-300 px-4 py-3 rounded mb-6">
             {error}
@@ -203,7 +197,7 @@ export default function ClientForm() {
             </form>
           </CardContent>
         </Card>
-      </main>
+      </div>
     </div>
   );
 }

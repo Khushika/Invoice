@@ -65,22 +65,16 @@ export default function Invoices() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b border-border/40 bg-card/50 backdrop-blur-sm sticky top-0 z-40">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center justify-between">
-            <h1 className="font-sora text-3xl font-bold">Invoices</h1>
-            <Link to="/invoices/new">
-              <Button className="bg-accent hover:bg-accent/90 text-primary-foreground gap-2">
-                <Plus className="w-4 h-4" />
-                New Invoice
-              </Button>
-            </Link>
-          </div>
+      <div className="container mx-auto px-4 py-8">
+        <div className="flex items-center justify-between mb-6">
+          <h1 className="font-sora text-3xl font-bold">Invoices</h1>
+          <Link to="/invoices/new">
+            <Button className="bg-accent hover:bg-accent/90 text-primary-foreground gap-2">
+              <Plus className="w-4 h-4" />
+              New Invoice
+            </Button>
+          </Link>
         </div>
-      </header>
-
-      <main className="container mx-auto px-4 py-8">
         {/* Search Bar */}
         <div className="mb-6 relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
@@ -202,7 +196,7 @@ export default function Invoices() {
             )}
           </CardContent>
         </Card>
-      </main>
+      </div>
     </div>
   );
 }

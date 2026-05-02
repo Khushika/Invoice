@@ -54,14 +54,8 @@ export default function Settings() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b border-border/40 bg-card/50 backdrop-blur-sm sticky top-0 z-40">
-        <div className="container mx-auto px-4 py-6">
-          <h1 className="font-sora text-3xl font-bold">Settings</h1>
-        </div>
-      </header>
-
-      <main className="container mx-auto px-4 py-8 max-w-4xl">
+      <div className="container mx-auto px-4 py-8 max-w-4xl">
+        <h1 className="font-sora text-3xl font-bold mb-8">Settings</h1>
         {/* Tabs */}
         <div className="flex gap-2 mb-8 border-b border-border/40 pb-4">
           {[
@@ -275,7 +269,7 @@ export default function Settings() {
             </Card>
           </div>
         )}
-      </main>
+      </div>
     </div>
   );
 }

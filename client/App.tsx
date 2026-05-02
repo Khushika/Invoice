@@ -19,6 +19,7 @@ import ClientForm from "./pages/ClientForm";
 import ClientDetail from "./pages/ClientDetail";
 import Settings from "./pages/Settings";
 import NotFound from "./pages/NotFound";
+import MainLayout from "./components/MainLayout";
 
 const queryClient = new QueryClient();
 
@@ -29,21 +30,95 @@ const App = () => (
       <Sonner />
       <BrowserRouter>
         <Routes>
+          {/* Public Routes */}
           <Route path="/" element={<Landing />} />
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
-          <Route path="/dashboard" element={<Dashboard />} />
-          <Route path="/invoices" element={<Invoices />} />
-          <Route path="/invoices/new" element={<InvoiceForm />} />
-          <Route path="/invoices/:id" element={<InvoiceDetail />} />
-          <Route path="/invoices/:id/edit" element={<InvoiceForm />} />
-          <Route path="/clients" element={<Clients />} />
-          <Route path="/clients/new" element={<ClientForm />} />
-          <Route path="/clients/:id" element={<ClientDetail />} />
-          <Route path="/clients/:id/edit" element={<ClientForm />} />
-          <Route path="/settings" element={<Settings />} />
-          {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+
+          {/* Protected Routes with Sidebar */}
+          <Route
+            path="/dashboard"
+            element={
+              <MainLayout>
+                <Dashboard />
+              </MainLayout>
+            }
+          />
+          <Route
+            path="/invoices"
+            element={
+              <MainLayout>
+                <Invoices />
+              </MainLayout>
+            }
+          />
+          <Route
+            path="/invoices/new"
+            element={
+              <MainLayout>
+                <InvoiceForm />
+              </MainLayout>
+            }
+          />
+          <Route
+            path="/invoices/:id"
+            element={
+              <MainLayout>
+                <InvoiceDetail />
+              </MainLayout>
+            }
+          />
+          <Route
+            path="/invoices/:id/edit"
+            element={
+              <MainLayout>
+                <InvoiceForm />
+              </MainLayout>
+            }
+          />
+          <Route
+            path="/clients"
+            element={
+              <MainLayout>
+                <Clients />
+              </MainLayout>
+            }
+          />
+          <Route
+            path="/clients/new"
+            element={
+              <MainLayout>
+                <ClientForm />
+              </MainLayout>
+            }
+          />
+          <Route
+            path="/clients/:id"
+            element={
+              <MainLayout>
+                <ClientDetail />
+              </MainLayout>
+            }
+          />
+          <Route
+            path="/clients/:id/edit"
+            element={
+              <MainLayout>
+                <ClientForm />
+              </MainLayout>
+            }
+          />
+          <Route
+            path="/settings"
+            element={
+              <MainLayout>
+                <Settings />
+              </MainLayout>
+            }
+          />
+
+          {/* 404 */}
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

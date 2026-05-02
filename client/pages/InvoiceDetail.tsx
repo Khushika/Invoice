@@ -152,45 +152,39 @@ export default function InvoiceDetail() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b border-border/40 bg-card/50 backdrop-blur-sm sticky top-0 z-40">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center justify-between">
-            <Link
-              to="/invoices"
-              className="flex items-center gap-2 text-accent hover:underline mb-4"
-            >
-              <ArrowLeft className="w-4 h-4" />
-              Back to Invoices
-            </Link>
-            <div className="flex gap-2">
-              {invoice.status !== "paid" && (
+      <div className="container mx-auto px-4 py-8 max-w-3xl">
+        <div className="flex items-center justify-between mb-8">
+          <Link
+            to="/invoices"
+            className="flex items-center gap-2 text-accent hover:underline"
+          >
+            <ArrowLeft className="w-4 h-4" />
+            Back to Invoices
+          </Link>
+          <div className="flex gap-2">
+            {invoice.status !== "paid" && (
+              <Button
+                onClick={handleSendReminder}
+                variant="outline"
+                className="border-border text-foreground hover:bg-card gap-2"
+              >
+                <Send className="w-4 h-4" />
+                Send Reminder
+              </Button>
+            )}
+            {invoice.status === "draft" && (
+              <Link to={`/invoices/${id}/edit`}>
                 <Button
-                  onClick={handleSendReminder}
                   variant="outline"
                   className="border-border text-foreground hover:bg-card gap-2"
                 >
-                  <Send className="w-4 h-4" />
-                  Send Reminder
+                  <Edit className="w-4 h-4" />
+                  Edit
                 </Button>
-              )}
-              {invoice.status === "draft" && (
-                <Link to={`/invoices/${id}/edit`}>
-                  <Button
-                    variant="outline"
-                    className="border-border text-foreground hover:bg-card gap-2"
-                  >
-                    <Edit className="w-4 h-4" />
-                    Edit
-                  </Button>
-                </Link>
-              )}
-            </div>
+              </Link>
+            )}
           </div>
         </div>
-      </header>
-
-      <main className="container mx-auto px-4 py-8 max-w-3xl">
         {/* Invoice Summary */}
         <Card className="bg-card border-border/40 mb-6">
           <CardHeader className="border-b border-border/40 pb-6">
@@ -369,7 +363,7 @@ export default function InvoiceDetail() {
             </CardContent>
           </Card>
         )}
-      </main>
+      </div>
     </div>
   );
 }

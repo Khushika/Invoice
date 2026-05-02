@@ -39,22 +39,16 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b border-border/40 bg-card/50 backdrop-blur-sm sticky top-0 z-40">
-        <div className="container mx-auto px-4 py-6">
-          <div className="flex items-center justify-between">
-            <h1 className="font-sora text-3xl font-bold">Dashboard</h1>
-            <Link to="/invoices/new">
-              <Button className="bg-accent hover:bg-accent/90 text-primary-foreground gap-2">
-                <Plus className="w-4 h-4" />
-                New Invoice
-              </Button>
-            </Link>
-          </div>
+      <div className="container mx-auto px-4 py-8">
+        <div className="flex items-center justify-between mb-8">
+          <h1 className="font-sora text-3xl font-bold">Dashboard</h1>
+          <Link to="/invoices/new">
+            <Button className="bg-accent hover:bg-accent/90 text-primary-foreground gap-2">
+              <Plus className="w-4 h-4" />
+              New Invoice
+            </Button>
+          </Link>
         </div>
-      </header>
-
-      <main className="container mx-auto px-4 py-8">
         {/* Stats Cards */}
         <div className="grid md:grid-cols-3 gap-6 mb-8">
           <StatsCard
@@ -141,7 +135,7 @@ export default function Dashboard() {
             )}
           </CardContent>
         </Card>
-      </main>
+      </div>
     </div>
   );
 }

@@ -109,42 +109,36 @@ export default function ClientDetail() {
 
   return (
     <div className="min-h-screen bg-background">
-      {/* Header */}
-      <header className="border-b border-border/40 bg-card/50 backdrop-blur-sm sticky top-0 z-40">
-        <div className="container mx-auto px-4 py-6">
-          <Link
-            to="/clients"
-            className="flex items-center gap-2 text-accent hover:underline mb-4"
-          >
-            <ArrowLeft className="w-4 h-4" />
-            Back to Clients
-          </Link>
-          <div className="flex items-center justify-between">
-            <h1 className="font-sora text-3xl font-bold">{client.name}</h1>
-            <div className="flex gap-2">
-              <Link to={`/clients/${id}/edit`}>
-                <Button
-                  variant="outline"
-                  className="border-border text-foreground hover:bg-card gap-2"
-                >
-                  <Edit className="w-4 h-4" />
-                  Edit
-                </Button>
-              </Link>
+      <div className="container mx-auto px-4 py-8">
+        <Link
+          to="/clients"
+          className="flex items-center gap-2 text-accent hover:underline mb-6"
+        >
+          <ArrowLeft className="w-4 h-4" />
+          Back to Clients
+        </Link>
+        <div className="flex items-center justify-between mb-8">
+          <h1 className="font-sora text-3xl font-bold">{client.name}</h1>
+          <div className="flex gap-2">
+            <Link to={`/clients/${id}/edit`}>
               <Button
-                onClick={handleDelete}
                 variant="outline"
-                className="border-red-500/50 text-red-400 hover:bg-red-500/10 gap-2"
+                className="border-border text-foreground hover:bg-card gap-2"
               >
-                <Trash2 className="w-4 h-4" />
-                Delete
+                <Edit className="w-4 h-4" />
+                Edit
               </Button>
-            </div>
+            </Link>
+            <Button
+              onClick={handleDelete}
+              variant="outline"
+              className="border-red-500/50 text-red-400 hover:bg-red-500/10 gap-2"
+            >
+              <Trash2 className="w-4 h-4" />
+              Delete
+            </Button>
           </div>
         </div>
-      </header>
-
-      <main className="container mx-auto px-4 py-8">
         <div className="grid md:grid-cols-3 gap-6">
           {/* Client Info */}
           <div className="md:col-span-2">
@@ -270,7 +264,7 @@ export default function ClientDetail() {
             </Card>
           </div>
         </div>
-      </main>
+      </div>
     </div>
   );
 }
