@@ -125,7 +125,6 @@ export const handleCreateInvoice: RequestHandler = (req, res) => {
       lineItems,
       status: status || "draft",
       subtotal,
-      taxRate: tax,
       total,
       paymentToken: Math.random().toString(36).substring(7),
       paidAt: null,

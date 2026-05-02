@@ -2,8 +2,6 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import { handleDemo } from "./routes/demo";
-import { handleSignUp, handleSignIn, handleSignOut } from "./routes/auth";
-import { handleDashboard } from "./routes/dashboard";
 import {
   handleSignUp,
   handleSignIn,
@@ -11,6 +9,7 @@ import {
   handleResetPassword,
   handleDeleteAccount,
 } from "./routes/auth";
+import { handleDashboard } from "./routes/dashboard";
 import {
   handleGetInvoices,
   handleGetInvoice,
@@ -47,6 +46,8 @@ export function createServer() {
   app.post("/api/auth/signup", handleSignUp);
   app.post("/api/auth/signin", handleSignIn);
   app.post("/api/auth/signout", handleSignOut);
+  app.post("/api/auth/reset-password", handleResetPassword);
+  app.post("/api/auth/delete-account", handleDeleteAccount);
 
   // Dashboard
   app.get("/api/dashboard", handleDashboard);
