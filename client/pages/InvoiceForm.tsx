@@ -43,6 +43,10 @@ export default function InvoiceForm() {
     loadClients();
     if (isEditing) {
       loadInvoice();
+    } else {
+      // Auto-generate invoice number for new invoices
+      const timestamp = Date.now().toString().slice(-6);
+      setInvoiceNumber(`INV-${timestamp}`);
     }
   }, [id]);
 
