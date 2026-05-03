@@ -49,13 +49,15 @@ export default function Landing() {
                 Start Free Trial
               </Button>
             </Link>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-border text-foreground hover:bg-card"
-            >
-              View Demo
-            </Button>
+            <Link to="/signin">
+              <Button
+                size="lg"
+                variant="outline"
+                className="border-border text-foreground hover:bg-card"
+              >
+                View Demo
+              </Button>
+            </Link>
           </div>
         </div>
       </section>
@@ -220,16 +222,18 @@ function PricingCard({
           </li>
         ))}
       </ul>
-      <Button
-        className={
-          highlighted
-            ? "w-full bg-accent hover:bg-accent/90 text-primary-foreground"
-            : "w-full border-border text-foreground hover:bg-card"
-        }
-        variant={highlighted ? "default" : "outline"}
-      >
-        Get Started
-      </Button>
+      <Link to="/signup">
+        <Button
+          className={
+            highlighted
+              ? "w-full bg-accent hover:bg-accent/90 text-primary-foreground"
+              : "w-full border-border text-foreground hover:bg-card"
+          }
+          variant={highlighted ? "default" : "outline"}
+        >
+          Get Started
+        </Button>
+      </Link>
     </div>
   );
 }

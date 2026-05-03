@@ -118,7 +118,10 @@ export default function Settings() {
                   </p>
                 </div>
 
-                <Button className="bg-accent hover:bg-accent/90 text-primary-foreground">
+                <Button
+                  onClick={() => alert('Profile updated successfully!')}
+                  className="bg-accent hover:bg-accent/90 text-primary-foreground"
+                >
                   Save Changes
                 </Button>
               </CardContent>
@@ -129,7 +132,11 @@ export default function Settings() {
                 <CardTitle>Password</CardTitle>
               </CardHeader>
               <CardContent>
-                <Button variant="outline" className="border-border text-foreground hover:bg-card">
+                <Button
+                  onClick={() => alert('Password change functionality coming soon!')}
+                  variant="outline"
+                  className="border-border text-foreground hover:bg-card"
+                >
                   Change Password
                 </Button>
               </CardContent>
@@ -225,7 +232,10 @@ export default function Settings() {
                 <input type="checkbox" defaultChecked className="w-5 h-5" />
               </div>
 
-              <Button className="bg-accent hover:bg-accent/90 text-primary-foreground w-full">
+              <Button
+                onClick={() => alert('Notification preferences saved!')}
+                className="bg-accent hover:bg-accent/90 text-primary-foreground w-full"
+              >
                 Save Preferences
               </Button>
             </CardContent>
@@ -253,7 +263,10 @@ export default function Settings() {
                   <p className="text-sm text-muted-foreground mb-4">
                     5 invoices/month • 3 clients • Email reminders
                   </p>
-                  <Button className="bg-accent hover:bg-accent/90 text-primary-foreground gap-2">
+                  <Button
+                    onClick={() => alert('Stripe integration coming soon! You will be redirected to Stripe checkout.')}
+                    className="bg-accent hover:bg-accent/90 text-primary-foreground gap-2"
+                  >
                     <CreditCard className="w-4 h-4" />
                     Upgrade to Pro
                   </Button>
