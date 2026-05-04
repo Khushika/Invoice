@@ -18,6 +18,8 @@ import Clients from "./pages/Clients";
 import ClientForm from "./pages/ClientForm";
 import ClientDetail from "./pages/ClientDetail";
 import Settings from "./pages/Settings";
+import PaymentPortal from "./pages/PaymentPortal";
+import RemindersSettings from "./pages/RemindersSettings";
 import NotFound from "./pages/NotFound";
 import MainLayout from "./components/MainLayout";
 
@@ -35,6 +37,7 @@ const App = () => (
           <Route path="/signup" element={<SignUp />} />
           <Route path="/signin" element={<SignIn />} />
           <Route path="/forgot-password" element={<ForgotPassword />} />
+          <Route path="/pay/:token" element={<PaymentPortal />} />
 
           {/* Protected Routes with Sidebar */}
           <Route
@@ -114,6 +117,14 @@ const App = () => (
             element={
               <MainLayout>
                 <Settings />
+              </MainLayout>
+            }
+          />
+          <Route
+            path="/settings/reminders"
+            element={
+              <MainLayout>
+                <RemindersSettings />
               </MainLayout>
             }
           />

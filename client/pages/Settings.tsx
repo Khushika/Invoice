@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import {
@@ -238,6 +238,21 @@ export default function Settings() {
               >
                 Save Preferences
               </Button>
+
+              <div className="pt-6 border-t border-border/40">
+                <h3 className="font-medium mb-2">Payment Reminders</h3>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Configure automatic reminders for when invoices are due
+                </p>
+                <Link to="/settings/reminders">
+                  <Button
+                    variant="outline"
+                    className="border-border text-foreground hover:bg-card w-full"
+                  >
+                    Manage Reminders
+                  </Button>
+                </Link>
+              </div>
             </CardContent>
           </Card>
         )}
