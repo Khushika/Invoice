@@ -17,7 +17,9 @@ import {
   Clock,
   AlertCircle,
   Send,
+  Download,
 } from "lucide-react";
+import { exportInvoiceAsJSON } from "@/utils/pdfExport";
 
 interface Invoice {
   id: string;
@@ -314,7 +316,7 @@ export default function InvoiceDetail() {
         </Card>
 
         {/* Actions */}
-        <div className="grid md:grid-cols-2 gap-4 mb-6">
+        <div className="grid md:grid-cols-3 gap-4 mb-6">
           {invoice.status !== "paid" && (
             <Button
               onClick={handleMarkPaid}
@@ -331,7 +333,30 @@ export default function InvoiceDetail() {
             className="border-border text-foreground hover:bg-card gap-2"
           >
             <Copy className="w-4 h-4" />
-            {copying ? "Copied!" : "Copy Payment Link"}
+            {copying ? "Copied!" : "Copy Link"}
+          </Button>
+          <Button
+            onClick={() =>
+              exportInvoiceAsJSON({
+                invoiceNumber: invoice.invoiceNumber,
+                clientName: invoice.clientName,
+                freelancerName: "Your Name",
+                freelancerEmail: "you@example.com",
+                issueDate: invoice.issuedDate,
+                dueDate: invoice.dueDate,
+                lineItems: invoice.lineItems,
+                subtotal: invoice.subtotal,
+                taxRate: invoice.taxRate,
+                total: invoice.total,
+                currency: invoice.currency,
+                notes: invoice.notes,
+              })
+            }
+            variant="outline"
+            className="border-border text-foreground hover:bg-card gap-2"
+          >
+            <Download className="w-4 h-4" />
+            Export
           </Button>
         </div>
 
