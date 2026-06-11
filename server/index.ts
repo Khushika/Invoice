@@ -17,6 +17,7 @@ import {
   handleUpdateInvoice,
   handleMarkPaid,
   handleSendReminder,
+  handleDeleteInvoice,
 } from "./routes/invoices";
 import {
   handleGetClients,
@@ -66,6 +67,7 @@ export function createServer() {
   app.post("/api/invoices", handleCreateInvoice);
   app.get("/api/invoices/:id", handleGetInvoice);
   app.put("/api/invoices/:id", handleUpdateInvoice);
+  app.delete("/api/invoices/:id", handleDeleteInvoice);
   app.post("/api/invoices/:id/mark-paid", handleMarkPaid);
   app.post("/api/invoices/:id/remind", handleSendReminder);
 

@@ -221,3 +221,24 @@ export const handleSendReminder: RequestHandler = (req, res) => {
     });
   }
 };
+
+export const handleDeleteInvoice: RequestHandler = (req, res) => {
+  try {
+    const { id } = req.params;
+
+    if (!invoices[id]) {
+      res.status(404).json({ error: "Invoice not found" });
+      return;
+    }
+
+    // In production: verify user owns this invoice and soft-delete
+    delete invoices[id];
+
+    res.json({ success: true, message: "Invoice deleted" });
+  } catch (error) {
+    res.status(500).json({
+      error: "Failed to delete invoice",
+      details: error instanceof Error ? error.message : "Unknown error",
+    });
+  }
+};
