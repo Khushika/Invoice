@@ -23,6 +23,7 @@ import RemindersSettings from "./pages/RemindersSettings";
 import Templates from "./pages/Templates";
 import TemplateForm from "./pages/TemplateForm";
 import Activity from "./pages/Activity";
+import Search from "./pages/Search";
 import NotFound from "./pages/NotFound";
 import MainLayout from "./components/MainLayout";
 
@@ -160,6 +161,14 @@ const App = () => (
             element={
               <MainLayout>
                 <Activity />
+              </MainLayout>
+            }
+          />
+          <Route
+            path="/search"
+            element={
+              <MainLayout>
+                <Search />
               </MainLayout>
             }
           />

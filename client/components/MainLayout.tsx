@@ -1,4 +1,4 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import {
   FileText,
   Home,
@@ -10,6 +10,7 @@ import {
   X,
   FileCode,
   History,
+  Search as SearchIcon,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -19,7 +20,9 @@ export default function MainLayout({
   children: React.ReactNode;
 }) {
   const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const location = useLocation();
+  const navigate = useNavigate();
 
   const navItems = [
     { href: "/dashboard", icon: Home, label: "Dashboard" },
@@ -106,15 +109,40 @@ export default function MainLayout({
       </button>
 
       {/* Main Content */}
-      <main className="flex-1 overflow-auto">
-        {/* Mobile overlay */}
-        {sidebarOpen && (
-          <div
-            className="fixed inset-0 bg-black/50 md:hidden z-30"
-            onClick={() => setSidebarOpen(false)}
-          />
-        )}
-        {children}
+      <main className="flex-1 overflow-auto flex flex-col">
+        {/* Top Search Bar */}
+        <div className="sticky top-0 bg-background border-b border-border/40 px-6 py-4 z-20">
+          <div className="flex items-center gap-4">
+            <div className="flex-1 relative max-w-sm">
+              <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
+              <input
+                type="text"
+                placeholder="Search invoices, clients..."
+                className="w-full pl-10 pr-4 py-2 bg-card border border-border/40 rounded-lg text-sm text-foreground placeholder-muted-foreground focus:outline-none focus:border-accent"
+                onFocus={() => setSearchOpen(true)}
+                onKeyDown={(e) => {
+                  if (e.key === "Enter") {
+                    const query = (e.target as HTMLInputElement).value;
+                    navigate(`/search?q=${encodeURIComponent(query)}`);
+                    setSearchOpen(false);
+                  }
+                }}
+              />
+            </div>
+          </div>
+        </div>
+
+        {/* Page Content */}
+        <div className="flex-1 overflow-auto">
+          {/* Mobile overlay */}
+          {sidebarOpen && (
+            <div
+              className="fixed inset-0 bg-black/50 md:hidden z-30"
+              onClick={() => setSidebarOpen(false)}
+            />
+          )}
+          {children}
+        </div>
       </main>
     </div>
   );

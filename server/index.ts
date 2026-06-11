@@ -35,6 +35,7 @@ import {
   handleDuplicateTemplate,
 } from "./routes/templates";
 import { handleGetActivity, handleLogActivity } from "./routes/activity";
+import { handleSearch } from "./routes/search";
 
 export function createServer() {
   const app = express();
@@ -89,6 +90,9 @@ export function createServer() {
   // Activity routes
   app.get("/api/activity", handleGetActivity);
   app.post("/api/activity", handleLogActivity);
+
+  // Search route
+  app.get("/api/search", handleSearch);
 
   return app;
 }
