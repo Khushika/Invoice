@@ -36,6 +36,13 @@ import {
 } from "./routes/templates";
 import { handleGetActivity, handleLogActivity } from "./routes/activity";
 import { handleSearch } from "./routes/search";
+import {
+  handleGetNotes,
+  handleCreateNote,
+  handleDeleteNote,
+  handleGetCommunications,
+  handleCreateCommunication,
+} from "./routes/clientCommunications";
 
 export function createServer() {
   const app = express();
@@ -93,6 +100,13 @@ export function createServer() {
 
   // Search route
   app.get("/api/search", handleSearch);
+
+  // Client communications routes
+  app.get("/api/clients/:clientId/notes", handleGetNotes);
+  app.post("/api/clients/:clientId/notes", handleCreateNote);
+  app.delete("/api/clients/:clientId/notes/:noteId", handleDeleteNote);
+  app.get("/api/clients/:clientId/communications", handleGetCommunications);
+  app.post("/api/clients/:clientId/communications", handleCreateCommunication);
 
   return app;
 }

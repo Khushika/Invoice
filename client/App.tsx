@@ -24,6 +24,7 @@ import Templates from "./pages/Templates";
 import TemplateForm from "./pages/TemplateForm";
 import Activity from "./pages/Activity";
 import Search from "./pages/Search";
+import ClientCommunication from "./pages/ClientCommunication";
 import NotFound from "./pages/NotFound";
 import MainLayout from "./components/MainLayout";
 
@@ -113,6 +114,14 @@ const App = () => (
             element={
               <MainLayout>
                 <ClientForm />
+              </MainLayout>
+            }
+          />
+          <Route
+            path="/clients/:id/communications"
+            element={
+              <MainLayout>
+                <ClientCommunication />
               </MainLayout>
             }
           />

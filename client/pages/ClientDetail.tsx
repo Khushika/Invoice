@@ -16,6 +16,7 @@ import {
   Phone,
   Building,
   AlertCircle,
+  MessageSquare,
 } from "lucide-react";
 
 interface Client {
@@ -120,6 +121,15 @@ export default function ClientDetail() {
         <div className="flex items-center justify-between mb-8">
           <h1 className="font-sora text-3xl font-bold">{client.name}</h1>
           <div className="flex gap-2">
+            <Link to={`/clients/${id}/communications`}>
+              <Button
+                variant="outline"
+                className="border-border text-foreground hover:bg-card gap-2"
+              >
+                <MessageSquare className="w-4 h-4" />
+                Communications
+              </Button>
+            </Link>
             <Link to={`/clients/${id}/edit`}>
               <Button
                 variant="outline"
