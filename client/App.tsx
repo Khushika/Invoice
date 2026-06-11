@@ -20,6 +20,9 @@ import ClientDetail from "./pages/ClientDetail";
 import Settings from "./pages/Settings";
 import PaymentPortal from "./pages/PaymentPortal";
 import RemindersSettings from "./pages/RemindersSettings";
+import Templates from "./pages/Templates";
+import TemplateForm from "./pages/TemplateForm";
+import Activity from "./pages/Activity";
 import NotFound from "./pages/NotFound";
 import MainLayout from "./components/MainLayout";
 
@@ -125,6 +128,38 @@ const App = () => (
             element={
               <MainLayout>
                 <RemindersSettings />
+              </MainLayout>
+            }
+          />
+          <Route
+            path="/templates"
+            element={
+              <MainLayout>
+                <Templates />
+              </MainLayout>
+            }
+          />
+          <Route
+            path="/templates/new"
+            element={
+              <MainLayout>
+                <TemplateForm />
+              </MainLayout>
+            }
+          />
+          <Route
+            path="/templates/:id"
+            element={
+              <MainLayout>
+                <TemplateForm />
+              </MainLayout>
+            }
+          />
+          <Route
+            path="/activity"
+            element={
+              <MainLayout>
+                <Activity />
               </MainLayout>
             }
           />

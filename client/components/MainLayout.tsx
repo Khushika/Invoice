@@ -8,6 +8,8 @@ import {
   LogOut,
   Menu,
   X,
+  FileCode,
+  History,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -23,6 +25,8 @@ export default function MainLayout({
     { href: "/dashboard", icon: Home, label: "Dashboard" },
     { href: "/invoices", icon: FileCheck, label: "Invoices" },
     { href: "/clients", icon: Users, label: "Clients" },
+    { href: "/templates", icon: FileCode, label: "Templates" },
+    { href: "/activity", icon: History, label: "Activity" },
     { href: "/settings", icon: Settings, label: "Settings" },
   ];
 

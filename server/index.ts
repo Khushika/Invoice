@@ -25,6 +25,15 @@ import {
   handleUpdateClient,
   handleDeleteClient,
 } from "./routes/clients";
+import {
+  handleGetTemplates,
+  handleGetTemplate,
+  handleCreateTemplate,
+  handleUpdateTemplate,
+  handleDeleteTemplate,
+  handleDuplicateTemplate,
+} from "./routes/templates";
+import { handleGetActivity, handleLogActivity } from "./routes/activity";
 
 export function createServer() {
   const app = express();
@@ -66,6 +75,18 @@ export function createServer() {
   app.get("/api/clients/:id", handleGetClient);
   app.put("/api/clients/:id", handleUpdateClient);
   app.delete("/api/clients/:id", handleDeleteClient);
+
+  // Template routes
+  app.get("/api/templates", handleGetTemplates);
+  app.post("/api/templates", handleCreateTemplate);
+  app.get("/api/templates/:id", handleGetTemplate);
+  app.put("/api/templates/:id", handleUpdateTemplate);
+  app.delete("/api/templates/:id", handleDeleteTemplate);
+  app.post("/api/templates/:id/duplicate", handleDuplicateTemplate);
+
+  // Activity routes
+  app.get("/api/activity", handleGetActivity);
+  app.post("/api/activity", handleLogActivity);
 
   return app;
 }
