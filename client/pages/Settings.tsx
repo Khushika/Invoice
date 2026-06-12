@@ -9,12 +9,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { LogOut, Trash2, Bell, CreditCard } from "lucide-react";
+import { LogOut, Trash2, Bell, CreditCard, Download } from "lucide-react";
 
 export default function Settings() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<
-    "profile" | "notifications" | "billing"
+    "profile" | "notifications" | "billing" | "export"
   >("profile");
   const [businessName, setBusinessName] = useState("");
   const [email, setEmail] = useState("");
@@ -62,6 +62,7 @@ export default function Settings() {
             { id: "profile", label: "Profile", icon: "👤" },
             { id: "notifications", label: "Notifications", icon: "🔔" },
             { id: "billing", label: "Billing", icon: "💳" },
+            { id: "export", label: "Data Export", icon: "📥" },
           ].map((tab) => (
             <button
               key={tab.id}
@@ -293,6 +294,37 @@ export default function Settings() {
                     <p>No billing history yet</p>
                   </div>
                 </div>
+              </CardContent>
+            </Card>
+          </div>
+        )}
+
+        {/* Export Tab */}
+        {activeTab === "export" && (
+          <div className="space-y-6">
+            <Card className="bg-card border-border/40">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Download className="w-5 h-5" />
+                  Data Export & Backup
+                </CardTitle>
+                <CardDescription>
+                  Download and backup all your InvoiceHound data
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <div className="mb-6">
+                  <p className="text-sm text-muted-foreground mb-4">
+                    Export all your invoices, clients, templates, and activity logs in
+                    various formats for backup or data migration.
+                  </p>
+                </div>
+                <Link to="/settings/export" className="w-full">
+                  <Button className="bg-accent hover:bg-accent/90 text-primary-foreground w-full gap-2">
+                    <Download className="w-4 h-4" />
+                    Go to Export Page
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
           </div>

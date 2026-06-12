@@ -44,6 +44,7 @@ import {
   handleCreateCommunication,
 } from "./routes/clientCommunications";
 import { handleGetReports } from "./routes/reports";
+import { handleExport } from "./routes/export";
 
 export function createServer() {
   const app = express();
@@ -111,6 +112,9 @@ export function createServer() {
 
   // Reports route
   app.get("/api/reports", handleGetReports);
+
+  // Export route
+  app.get("/api/export", handleExport);
 
   return app;
 }

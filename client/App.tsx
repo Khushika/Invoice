@@ -26,6 +26,7 @@ import Activity from "./pages/Activity";
 import Search from "./pages/Search";
 import ClientCommunication from "./pages/ClientCommunication";
 import Reports from "./pages/Reports";
+import DataExport from "./pages/DataExport";
 import NotFound from "./pages/NotFound";
 import MainLayout from "./components/MainLayout";
 
@@ -187,6 +188,14 @@ const App = () => (
             element={
               <MainLayout>
                 <Reports />
+              </MainLayout>
+            }
+          />
+          <Route
+            path="/settings/export"
+            element={
+              <MainLayout>
+                <DataExport />
               </MainLayout>
             }
           />
