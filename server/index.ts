@@ -43,6 +43,7 @@ import {
   handleGetCommunications,
   handleCreateCommunication,
 } from "./routes/clientCommunications";
+import { handleGetReports } from "./routes/reports";
 
 export function createServer() {
   const app = express();
@@ -107,6 +108,9 @@ export function createServer() {
   app.delete("/api/clients/:clientId/notes/:noteId", handleDeleteNote);
   app.get("/api/clients/:clientId/communications", handleGetCommunications);
   app.post("/api/clients/:clientId/communications", handleCreateCommunication);
+
+  // Reports route
+  app.get("/api/reports", handleGetReports);
 
   return app;
 }

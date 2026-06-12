@@ -11,6 +11,7 @@ import {
   FileCode,
   History,
   Search as SearchIcon,
+  BarChart3,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -29,6 +30,7 @@ export default function MainLayout({
     { href: "/invoices", icon: FileCheck, label: "Invoices" },
     { href: "/clients", icon: Users, label: "Clients" },
     { href: "/templates", icon: FileCode, label: "Templates" },
+    { href: "/reports", icon: BarChart3, label: "Reports" },
     { href: "/activity", icon: History, label: "Activity" },
     { href: "/settings", icon: Settings, label: "Settings" },
   ];
