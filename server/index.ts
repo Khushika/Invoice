@@ -56,6 +56,13 @@ import {
   handleUpdateRecurringInvoice,
   handleDeleteRecurringInvoice,
 } from "./routes/recurringInvoices";
+import {
+  handleGetIntegrations,
+  handleSaveIntegrations,
+  handleSendEmail,
+  handleSendSMS,
+  handleCreatePaymentIntent,
+} from "./routes/integrations";
 
 export function createServer() {
   const app = express();
@@ -137,6 +144,13 @@ export function createServer() {
   app.get("/api/recurring-invoices/:id", handleGetRecurringInvoice);
   app.put("/api/recurring-invoices/:id", handleUpdateRecurringInvoice);
   app.delete("/api/recurring-invoices/:id", handleDeleteRecurringInvoice);
+
+  // Integrations routes
+  app.get("/api/integrations", handleGetIntegrations);
+  app.post("/api/integrations", handleSaveIntegrations);
+  app.post("/api/integrations/send-email", handleSendEmail);
+  app.post("/api/integrations/send-sms", handleSendSMS);
+  app.post("/api/integrations/payment-intent", handleCreatePaymentIntent);
 
   return app;
 }
