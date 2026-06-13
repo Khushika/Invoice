@@ -301,6 +301,35 @@ export default function Settings() {
           </div>
         )}
 
+        {/* Integrations Tab */}
+        {activeTab === "integrations" && (
+          <div className="space-y-6">
+            <Card className="bg-card border-border/40">
+              <CardHeader>
+                <CardTitle className="flex items-center gap-2">
+                  <Zap className="w-5 h-5" />
+                  Integrations
+                </CardTitle>
+                <CardDescription>
+                  Connect email, SMS, and payment services
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Set up integrations to send emails, SMS reminders, and accept payments directly
+                  in your invoices.
+                </p>
+                <Link to="/settings/integrations" className="w-full">
+                  <Button className="bg-accent hover:bg-accent/90 text-primary-foreground w-full gap-2">
+                    <Zap className="w-4 h-4" />
+                    Manage Integrations
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+          </div>
+        )}
+
         {/* Branding Tab */}
         {activeTab === "branding" && (
           <div className="space-y-6">
