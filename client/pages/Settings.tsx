@@ -14,7 +14,7 @@ import { LogOut, Trash2, Bell, CreditCard, Download } from "lucide-react";
 export default function Settings() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<
-    "profile" | "notifications" | "billing" | "export"
+    "profile" | "notifications" | "billing" | "branding" | "export"
   >("profile");
   const [businessName, setBusinessName] = useState("");
   const [email, setEmail] = useState("");
@@ -62,6 +62,7 @@ export default function Settings() {
             { id: "profile", label: "Profile", icon: "👤" },
             { id: "notifications", label: "Notifications", icon: "🔔" },
             { id: "billing", label: "Billing", icon: "💳" },
+            { id: "branding", label: "Branding", icon: "🎨" },
             { id: "export", label: "Data Export", icon: "📥" },
           ].map((tab) => (
             <button
@@ -294,6 +295,31 @@ export default function Settings() {
                     <p>No billing history yet</p>
                   </div>
                 </div>
+              </CardContent>
+            </Card>
+          </div>
+        )}
+
+        {/* Branding Tab */}
+        {activeTab === "branding" && (
+          <div className="space-y-6">
+            <Card className="bg-card border-border/40">
+              <CardHeader>
+                <CardTitle>Invoice Branding</CardTitle>
+                <CardDescription>
+                  Customize how your invoices look and feel
+                </CardDescription>
+              </CardHeader>
+              <CardContent>
+                <p className="text-sm text-muted-foreground mb-4">
+                  Add your company logo, colors, contact information, and branding to all
+                  your invoices.
+                </p>
+                <Link to="/settings/branding" className="w-full">
+                  <Button variant="outline" className="w-full border-border text-foreground hover:bg-card">
+                    Customize Branding
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
           </div>

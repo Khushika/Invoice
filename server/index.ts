@@ -45,6 +45,17 @@ import {
 } from "./routes/clientCommunications";
 import { handleGetReports } from "./routes/reports";
 import { handleExport } from "./routes/export";
+import {
+  handleGetBrandingSettings,
+  handleSaveBrandingSettings,
+} from "./routes/branding";
+import {
+  handleGetRecurringInvoices,
+  handleGetRecurringInvoice,
+  handleCreateRecurringInvoice,
+  handleUpdateRecurringInvoice,
+  handleDeleteRecurringInvoice,
+} from "./routes/recurringInvoices";
 
 export function createServer() {
   const app = express();
@@ -115,6 +126,17 @@ export function createServer() {
 
   // Export route
   app.get("/api/export", handleExport);
+
+  // Branding routes
+  app.get("/api/settings/branding", handleGetBrandingSettings);
+  app.post("/api/settings/branding", handleSaveBrandingSettings);
+
+  // Recurring invoices routes
+  app.get("/api/recurring-invoices", handleGetRecurringInvoices);
+  app.post("/api/recurring-invoices", handleCreateRecurringInvoice);
+  app.get("/api/recurring-invoices/:id", handleGetRecurringInvoice);
+  app.put("/api/recurring-invoices/:id", handleUpdateRecurringInvoice);
+  app.delete("/api/recurring-invoices/:id", handleDeleteRecurringInvoice);
 
   return app;
 }

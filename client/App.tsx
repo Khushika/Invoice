@@ -27,6 +27,9 @@ import Search from "./pages/Search";
 import ClientCommunication from "./pages/ClientCommunication";
 import Reports from "./pages/Reports";
 import DataExport from "./pages/DataExport";
+import InvoiceBranding from "./pages/InvoiceBranding";
+import RecurringInvoices from "./pages/RecurringInvoices";
+import RecurringInvoiceForm from "./pages/RecurringInvoiceForm";
 import NotFound from "./pages/NotFound";
 import MainLayout from "./components/MainLayout";
 
@@ -196,6 +199,38 @@ const App = () => (
             element={
               <MainLayout>
                 <DataExport />
+              </MainLayout>
+            }
+          />
+          <Route
+            path="/settings/branding"
+            element={
+              <MainLayout>
+                <InvoiceBranding />
+              </MainLayout>
+            }
+          />
+          <Route
+            path="/recurring-invoices"
+            element={
+              <MainLayout>
+                <RecurringInvoices />
+              </MainLayout>
+            }
+          />
+          <Route
+            path="/recurring-invoices/new"
+            element={
+              <MainLayout>
+                <RecurringInvoiceForm />
+              </MainLayout>
+            }
+          />
+          <Route
+            path="/recurring-invoices/:id"
+            element={
+              <MainLayout>
+                <RecurringInvoiceForm />
               </MainLayout>
             }
           />

@@ -12,6 +12,7 @@ import {
   History,
   Search as SearchIcon,
   BarChart3,
+  Clock,
 } from "lucide-react";
 import { useState } from "react";
 
@@ -28,6 +29,7 @@ export default function MainLayout({
   const navItems = [
     { href: "/dashboard", icon: Home, label: "Dashboard" },
     { href: "/invoices", icon: FileCheck, label: "Invoices" },
+    { href: "/recurring-invoices", icon: Clock, label: "Recurring" },
     { href: "/clients", icon: Users, label: "Clients" },
     { href: "/templates", icon: FileCode, label: "Templates" },
     { href: "/reports", icon: BarChart3, label: "Reports" },
