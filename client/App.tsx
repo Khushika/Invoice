@@ -30,6 +30,7 @@ import DataExport from "./pages/DataExport";
 import InvoiceBranding from "./pages/InvoiceBranding";
 import RecurringInvoices from "./pages/RecurringInvoices";
 import RecurringInvoiceForm from "./pages/RecurringInvoiceForm";
+import Integrations from "./pages/Integrations";
 import NotFound from "./pages/NotFound";
 import MainLayout from "./components/MainLayout";
 
@@ -231,6 +232,14 @@ const App = () => (
             element={
               <MainLayout>
                 <RecurringInvoiceForm />
+              </MainLayout>
+            }
+          />
+          <Route
+            path="/settings/integrations"
+            element={
+              <MainLayout>
+                <Integrations />
               </MainLayout>
             }
           />

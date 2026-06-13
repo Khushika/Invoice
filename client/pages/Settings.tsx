@@ -9,12 +9,12 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { LogOut, Trash2, Bell, CreditCard, Download } from "lucide-react";
+import { LogOut, Trash2, Bell, CreditCard, Download, Zap } from "lucide-react";
 
 export default function Settings() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState<
-    "profile" | "notifications" | "billing" | "branding" | "export"
+    "profile" | "notifications" | "billing" | "branding" | "integrations" | "export"
   >("profile");
   const [businessName, setBusinessName] = useState("");
   const [email, setEmail] = useState("");
@@ -63,6 +63,7 @@ export default function Settings() {
             { id: "notifications", label: "Notifications", icon: "🔔" },
             { id: "billing", label: "Billing", icon: "💳" },
             { id: "branding", label: "Branding", icon: "🎨" },
+            { id: "integrations", label: "Integrations", icon: "⚡" },
             { id: "export", label: "Data Export", icon: "📥" },
           ].map((tab) => (
             <button
