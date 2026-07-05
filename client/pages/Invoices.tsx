@@ -139,24 +139,24 @@ export default function Invoices() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex items-center justify-between mb-6">
-          <h1 className="font-sora text-3xl font-bold">Invoices</h1>
-          <Link to="/invoices/new">
-            <Button className="bg-accent hover:bg-accent/90 text-primary-foreground gap-2">
+      <div className="container mx-auto px-2 sm:px-4 py-4 sm:py-8">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4 sm:mb-6">
+          <h1 className="font-sora text-2xl sm:text-3xl font-bold">Invoices</h1>
+          <Link to="/invoices/new" className="w-full sm:w-auto">
+            <Button className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-primary-foreground gap-2">
               <Plus className="w-4 h-4" />
               New Invoice
             </Button>
           </Link>
         </div>
         {/* Search Bar */}
-        <div className="mb-6 relative">
+        <div className="mb-4 sm:mb-6 relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <Input
-            placeholder="Search by client name or invoice number..."
+            placeholder="Search invoices..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 bg-input border-border text-foreground"
+            className="pl-10 text-sm sm:text-base bg-input border-border text-foreground"
           />
         </div>
 

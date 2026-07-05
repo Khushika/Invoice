@@ -39,18 +39,18 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex items-center justify-between mb-8">
-          <h1 className="font-sora text-3xl font-bold">Dashboard</h1>
-          <Link to="/invoices/new">
-            <Button className="bg-accent hover:bg-accent/90 text-primary-foreground gap-2">
+      <div className="container mx-auto px-2 sm:px-4 py-4 sm:py-8">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-6 sm:mb-8">
+          <h1 className="font-sora text-2xl sm:text-3xl font-bold">Dashboard</h1>
+          <Link to="/invoices/new" className="w-full sm:w-auto">
+            <Button className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-primary-foreground gap-2">
               <Plus className="w-4 h-4" />
               New Invoice
             </Button>
           </Link>
         </div>
         {/* Stats Cards */}
-        <div className="grid md:grid-cols-3 gap-6 mb-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-6 mb-6 sm:mb-8">
           <StatsCard
             title="Total Outstanding"
             value={`$${stats.totalOutstanding.toLocaleString()}`}
@@ -105,29 +105,27 @@ export default function Dashboard() {
                   <Link
                     key={invoice.id}
                     to={`/invoices/${invoice.id}`}
-                    className="flex items-center justify-between p-4 bg-muted/30 border border-border/40 rounded-lg hover:border-accent/50 transition-colors"
+                    className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 p-3 sm:p-4 bg-muted/30 border border-border/40 rounded-lg hover:border-accent/50 transition-colors"
                   >
-                    <div>
-                      <p className="font-medium">{invoice.clientName}</p>
-                      <p className="text-sm text-muted-foreground">
+                    <div className="flex-1 min-w-0">
+                      <p className="font-medium truncate">{invoice.clientName}</p>
+                      <p className="text-xs sm:text-sm text-muted-foreground truncate">
                         Invoice #{invoice.invoiceNumber}
                       </p>
                     </div>
-                    <div className="text-right">
+                    <div className="flex items-center justify-between w-full sm:w-auto gap-2">
                       <p className="font-medium">${invoice.amount}</p>
-                      <div className="text-sm">
-                        <span
-                          className={`px-2 py-1 rounded text-xs font-medium ${
-                            invoice.status === "overdue"
-                              ? "bg-red-500/20 text-red-400"
-                              : "bg-amber-500/20 text-amber-400"
-                          }`}
-                        >
-                          {invoice.status === "overdue"
-                            ? "Overdue"
-                            : "Due Soon"}
-                        </span>
-                      </div>
+                      <span
+                        className={`px-2 py-1 rounded text-xs font-medium whitespace-nowrap ${
+                          invoice.status === "overdue"
+                            ? "bg-red-500/20 text-red-400"
+                            : "bg-amber-500/20 text-amber-400"
+                        }`}
+                      >
+                        {invoice.status === "overdue"
+                          ? "Overdue"
+                          : "Due Soon"}
+                      </span>
                     </div>
                   </Link>
                 ))}
