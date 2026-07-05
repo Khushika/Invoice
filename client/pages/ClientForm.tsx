@@ -82,19 +82,19 @@ export default function ClientForm() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-8 max-w-2xl">
-        <h1 className="font-sora text-3xl font-bold mb-8">
+      <div className="container mx-auto px-2 sm:px-4 py-4 sm:py-8 max-w-2xl">
+        <h1 className="font-sora text-2xl sm:text-3xl font-bold mb-4 sm:mb-8">
           {isEditing ? "Edit Client" : "Add New Client"}
         </h1>
         {error && (
-          <div className="bg-red-500/20 border border-red-500/50 text-red-300 px-4 py-3 rounded mb-6">
+          <div className="bg-red-500/20 border border-red-500/50 text-red-300 px-3 sm:px-4 py-2 sm:py-3 rounded mb-4 sm:mb-6 text-sm sm:text-base">
             {error}
           </div>
         )}
 
         <Card className="bg-card border-border/40">
           <CardHeader>
-            <CardTitle>Client Information</CardTitle>
+            <CardTitle className="text-lg sm:text-xl">Client Information</CardTitle>
             <CardDescription>
               {isEditing
                 ? "Update client details"
@@ -102,7 +102,7 @@ export default function ClientForm() {
             </CardDescription>
           </CardHeader>
           <CardContent>
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
               <div>
                 <label className="block text-sm font-medium mb-2">
                   Client Name *

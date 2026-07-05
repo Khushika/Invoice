@@ -53,30 +53,30 @@ export default function Clients() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-8">
-        <div className="flex items-center justify-between mb-6">
-          <h1 className="font-sora text-3xl font-bold">Clients</h1>
-          <Link to="/clients/new">
-            <Button className="bg-accent hover:bg-accent/90 text-primary-foreground gap-2">
+      <div className="container mx-auto px-2 sm:px-4 py-4 sm:py-8">
+        <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 mb-4 sm:mb-6">
+          <h1 className="font-sora text-2xl sm:text-3xl font-bold">Clients</h1>
+          <Link to="/clients/new" className="w-full sm:w-auto">
+            <Button className="w-full sm:w-auto bg-accent hover:bg-accent/90 text-primary-foreground gap-2">
               <Plus className="w-4 h-4" />
               New Client
             </Button>
           </Link>
         </div>
         {/* Search Bar */}
-        <div className="mb-6 relative">
+        <div className="mb-4 sm:mb-6 relative">
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-muted-foreground" />
           <Input
-            placeholder="Search by name, email, or company..."
+            placeholder="Search clients..."
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="pl-10 bg-input border-border text-foreground"
+            className="pl-10 text-sm sm:text-base bg-input border-border text-foreground"
           />
         </div>
 
         {/* Clients Grid */}
         {isLoading ? (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
             {[...Array(6)].map((_, i) => (
               <div
                 key={i}
@@ -94,25 +94,25 @@ export default function Clients() {
             </Link>
           </div>
         ) : (
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6">
             {filteredClients.map((client) => (
               <Link key={client.id} to={`/clients/${client.id}`}>
                 <Card className="bg-card border-border/40 hover:border-accent/50 transition-colors cursor-pointer h-full">
                   <CardHeader>
-                    <CardTitle className="text-lg">{client.name}</CardTitle>
+                    <CardTitle className="text-base sm:text-lg truncate">{client.name}</CardTitle>
                     {client.company && (
-                      <CardDescription>{client.company}</CardDescription>
+                      <CardDescription className="truncate">{client.company}</CardDescription>
                     )}
                   </CardHeader>
-                  <CardContent className="space-y-3">
-                    <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                      <Mail className="w-4 h-4" />
-                      <span className="break-all">{client.email}</span>
+                  <CardContent className="space-y-2 sm:space-y-3">
+                    <div className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground min-w-0">
+                      <Mail className="w-4 h-4 flex-shrink-0" />
+                      <span className="break-all text-xs">{client.email}</span>
                     </div>
                     {client.phone && (
-                      <div className="flex items-center gap-2 text-sm text-muted-foreground">
-                        <Phone className="w-4 h-4" />
-                        <span>{client.phone}</span>
+                      <div className="flex items-center gap-2 text-xs sm:text-sm text-muted-foreground">
+                        <Phone className="w-4 h-4 flex-shrink-0" />
+                        <span className="text-xs">{client.phone}</span>
                       </div>
                     )}
                     <div className="pt-2 border-t border-border/40">

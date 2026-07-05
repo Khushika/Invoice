@@ -78,18 +78,18 @@ export default function Reports() {
   }));
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
+    <div className="space-y-4 sm:space-y-6">
+      <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
         <div>
-          <h1 className="text-3xl font-bold text-foreground">Reports & Analytics</h1>
-          <p className="text-sm text-muted-foreground mt-1">
+          <h1 className="text-2xl sm:text-3xl font-bold text-foreground">Reports & Analytics</h1>
+          <p className="text-xs sm:text-sm text-muted-foreground mt-1">
             Track your business performance and trends
           </p>
         </div>
         <select
           value={dateRange}
           onChange={(e) => setDateRange(e.target.value as any)}
-          className="px-4 py-2 bg-card text-foreground border border-border rounded-lg"
+          className="px-3 sm:px-4 py-2 bg-card text-foreground text-sm border border-border rounded-lg"
         >
           <option value="month">Last 30 Days</option>
           <option value="quarter">Last 90 Days</option>
@@ -98,19 +98,19 @@ export default function Reports() {
       </div>
 
       {/* Key Metrics */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-4">
         <Card>
-          <CardContent className="pt-6">
-            <div className="flex items-center justify-between">
+          <CardContent className="pt-4 sm:pt-6">
+            <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
               <div>
                 <p className="text-xs font-medium text-muted-foreground mb-1">
                   Total Revenue
                 </p>
-                <p className="text-2xl font-bold text-foreground">
+                <p className="text-lg sm:text-2xl font-bold text-foreground">
                   ${reportData.totalRevenue.toLocaleString()}
                 </p>
               </div>
-              <DollarSign className="w-10 h-10 text-green-500 opacity-20" />
+              <DollarSign className="w-8 sm:w-10 h-8 sm:h-10 text-green-500 opacity-20" />
             </div>
           </CardContent>
         </Card>

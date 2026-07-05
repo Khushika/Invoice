@@ -54,10 +54,10 @@ export default function Settings() {
 
   return (
     <div className="min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-8 max-w-4xl">
-        <h1 className="font-sora text-3xl font-bold mb-8">Settings</h1>
-        {/* Tabs */}
-        <div className="flex gap-2 mb-8 border-b border-border/40 pb-4">
+      <div className="container mx-auto px-2 sm:px-4 py-4 sm:py-8 max-w-4xl">
+        <h1 className="font-sora text-2xl sm:text-3xl font-bold mb-4 sm:mb-8">Settings</h1>
+        {/* Tabs - Responsive Scroll on Mobile */}
+        <div className="flex gap-1 sm:gap-2 mb-6 sm:mb-8 border-b border-border/40 pb-3 sm:pb-4 overflow-x-auto">
           {[
             { id: "profile", label: "Profile", icon: "👤" },
             { id: "notifications", label: "Notifications", icon: "🔔" },
@@ -69,7 +69,7 @@ export default function Settings() {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id as any)}
-              className={`px-4 py-2 font-medium transition-colors ${
+              className={`px-2 sm:px-4 py-2 font-medium text-xs sm:text-sm whitespace-nowrap transition-colors ${
                 activeTab === tab.id
                   ? "text-accent border-b-2 border-accent"
                   : "text-muted-foreground hover:text-foreground"
