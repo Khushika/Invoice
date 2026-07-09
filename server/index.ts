@@ -1,14 +1,10 @@
 import "dotenv/config";
 import express from "express";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import { handleDemo } from "./routes/demo";
-import {
-  handleSignUp,
-  handleSignIn,
-  handleSignOut,
-  handleResetPassword,
-  handleDeleteAccount,
-} from "./routes/auth";
+import createAuthRouter from "./routes/auth";
+import { authenticateToken, authErrorHandler } from "./middleware/auth.middleware";
 import { handleDashboard } from "./routes/dashboard";
 import {
   handleGetInvoices,
@@ -71,6 +67,7 @@ export function createServer() {
   app.use(cors());
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
+  app.use(cookieParser()); // Enable cookie parsing for refresh tokens
 
   // Example API routes
   app.get("/api/ping", (_req, res) => {
@@ -80,12 +77,21 @@ export function createServer() {
 
   app.get("/api/demo", handleDemo);
 
-  // Auth routes
-  app.post("/api/auth/signup", handleSignUp);
-  app.post("/api/auth/signin", handleSignIn);
-  app.post("/api/auth/signout", handleSignOut);
-  app.post("/api/auth/reset-password", handleResetPassword);
-  app.post("/api/auth/delete-account", handleDeleteAccount);
+  // Auth routes (public and protected)
+  app.use("/api/auth", createAuthRouter());
+
+  // Apply authentication middleware to all protected routes
+  app.use("/api/dashboard", authenticateToken);
+  app.use("/api/invoices", authenticateToken);
+  app.use("/api/clients", authenticateToken);
+  app.use("/api/templates", authenticateToken);
+  app.use("/api/activity", authenticateToken);
+  app.use("/api/search", authenticateToken);
+  app.use("/api/reports", authenticateToken);
+  app.use("/api/export", authenticateToken);
+  app.use("/api/settings", authenticateToken);
+  app.use("/api/recurring-invoices", authenticateToken);
+  app.use("/api/integrations", authenticateToken);
 
   // Dashboard
   app.get("/api/dashboard", handleDashboard);
